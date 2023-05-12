@@ -20,40 +20,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <ul class="navbar-nav">
-
-                            @if (User?.Identity?.IsAuthenticated ?? false)
-                            {
-                                @if (User.IsInRole("Administrator"))
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Captains" asp-action="Index">Captains</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Teams" asp-action="Index">Teams</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Records" asp-action="Index">Records</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Results" asp-action="Index">Results</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="BibNumbers" asp-action="Index">BibNumbers</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Runners" asp-action="Index">Runners</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Stages" asp-action="Index">Stages</a>
-                                    </li>
-                                }
-                                else if (User.IsInRole("Captain"))
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="MyTeams" asp-action="Index">MyTeams</a>
-                                    </li>
-                                }
-                            }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="StageResults" asp-action="Index">StageResults</a>
                             </li>
@@ -62,7 +28,6 @@
                             </li>
                         </ul>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
