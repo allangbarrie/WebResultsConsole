@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebAdminConsole.ViewModels.LeaderBoardViewModel>
+
+@if (ViewData["StageName"] != null)
+{
+    ViewData["Title"] = ViewData["StageName"];
+    <h2 class="control-label">@ViewData["StageName"]</h2>
+}
+
+@if (ViewData["NoResults"] != null)
+{
+    ViewData["Title"] = ViewData["NoResults"];
+    <h3 class="text-danger">@ViewData["NoResults"]</h3>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Difference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Team.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Team.TeamCategory.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatPosition)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatDifference)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difference)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Team.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Team.TeamCategory.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatPosition)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CatDifference)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

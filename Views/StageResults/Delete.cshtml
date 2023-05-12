@@ -1,0 +1,16 @@
+﻿@model WebAdminConsole.Models.Stage
+
+@if (ViewData["StageName"] != null)
+{
+    ViewData["Title"] = ViewData["StageName"];
+    <h3>Are you sure you want to delete results for this stage?</h3>
+    <h2 class="control-label">@ViewData["StageName"]</h2>
+}
+
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="StageId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebAdminConsole.ViewModels.RecordCheckViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Overall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryRecord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Runner.Teams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Runner.First)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Runner.Last)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stage.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Overall)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryRecord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Runner.Teams.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Runner.First)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Runner.Last)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

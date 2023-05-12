@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebAdminConsole.Models.Runner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (ViewData["TeamName"] != null)
+{
+    <h2 class="control-label">@ViewData["TeamName"]</h2>
+}
+
+<p>
+    <a asp-action="NewRunner" asp-route-id="@ViewBag.TeamId">New Runner</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BibNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Last)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @Html.HiddenFor(modelItem => item.Teams.TeamId)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BibNumber.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <a asp-action="EditRunner" asp-route-id="@item.RunnerId">Edit</a> |
+                    <a asp-action="DeleteRunner" asp-route-id="@item.RunnerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    
+</table>
+
+<a asp-action="Index">Back to List</a>
