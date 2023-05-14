@@ -163,6 +163,11 @@ namespace WebAdminConsole.Controllers
                 .Include(u => u.TeamCategory)
                 .ToListAsync();
 
+            foreach (var result in leaderBoard)
+            {
+                result.Time = TimeSpan.FromTicks(result.Ticks);
+            }
+
             if (leaderBoard.Count == 0)
             {
                 ViewData["NoResults"] = "Results not in yet. Check back later.";
@@ -171,7 +176,7 @@ namespace WebAdminConsole.Controllers
 
             var viewModel = new List<LeaderBoardViewModel>();
 
-            foreach (var member in leaderBoard) 
+            foreach (var member in leaderBoard)
             {
                 var model = new LeaderBoardViewModel
                 {
@@ -180,11 +185,11 @@ namespace WebAdminConsole.Controllers
                     Difference = member.Difference,
                     Team = await _context.Team
                     .Where(u => u.TeamId == member.TeamId)
-                    .Include (u => u.TeamCategory)
+                    .Include(u => u.TeamCategory)
                     .FirstOrDefaultAsync(),
                     CatPosition = member.CategoryPosition,
                     CatDifference = member.CategoryDifference
-            };
+                };
 
                 viewModel.Add(model);
             }
