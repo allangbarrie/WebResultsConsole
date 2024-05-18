@@ -58,16 +58,16 @@ namespace WebAdminConsole.Controllers
                 .Min(u => u.Time);
 
             var viewModel = new List<StageResultsViewModel>();
-            
-            foreach (Result result in results) 
+
+            foreach (Result result in results)
             {
                 var runner = await _context.Runner
                     .Where(u => u.BibNumberId == result.BibNumberId)
-                    .Include (m => m.Category)
+                    .Include(m => m.Category)
                     .Include(m => m.Teams)
                     .FirstOrDefaultAsync();
 
-                var row = new StageResultsViewModel 
+                var row = new StageResultsViewModel
                 {
                     Time = result.Time,
                     Difference = result.Time - winningTime,
@@ -80,10 +80,13 @@ namespace WebAdminConsole.Controllers
 
 
             var position = 1;
-            var catPositions = new Dictionary<int, int>
+            var catPositions = new Dictionary<int, int> { };
+
+            foreach (var category in await _context.Category.ToListAsync())
             {
-                { 1, 1 }, { 2, 1 }, { 3, 1 }, { 4, 1 },{ 5, 1 },{ 6, 1 }
-            };
+                catPositions.Add(category.CategoryId, 1);
+            }
+
             foreach (StageResultsViewModel row in viewModel.OrderBy(o => o.Time).ToList())
             {
                 row.Position = position;
