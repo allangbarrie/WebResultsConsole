@@ -100,7 +100,7 @@ namespace WebAdminConsole.Controllers
                 catPositions[row.Runner.CategoryId]++;
             }
 
-            return View(viewModel);
+            return View(viewModel.OrderBy(u => u.Time));
         }
 
         [Authorize]
