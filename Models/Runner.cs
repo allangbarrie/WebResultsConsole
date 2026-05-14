@@ -11,6 +11,9 @@ namespace WebAdminConsole.Models
         [Required]
         public string Last { get; set; }
 
+        public int? Saturday { get; set; }
+        public int? Sunday { get; set; }
+
         public int? BibNumberId { get; set; }
         public int TeamId { get; set; }
         public int CategoryId { get; set; }

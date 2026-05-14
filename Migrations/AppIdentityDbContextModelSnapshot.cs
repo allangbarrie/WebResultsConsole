@@ -305,6 +305,9 @@ namespace WebAdminConsole.Migrations
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
 
+                    b.Property<long>("Ticks")
+                        .HasColumnType("bigint");
+
                     b.Property<TimeSpan>("Time")
                         .HasColumnType("time");
 
@@ -392,6 +395,12 @@ namespace WebAdminConsole.Migrations
                     b.Property<string>("Last")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Saturday")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Sunday")
+                        .HasColumnType("int");
 
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
